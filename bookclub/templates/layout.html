@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<style>
+    .content {
+      max-width: 500px;
+      margin: auto;
+    }
+</style>
+<body style="background-color: gray;">
+    
+    <div class="content">
+        {% block body %}
+        {% endblock body%}
+    </div>
+
+</body>
+</html>

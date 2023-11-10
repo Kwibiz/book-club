@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sign Up{% endblock title %}</title>
+</head>
+<body>
+    {% block body %}
+
+        {% if form.errors %}
+        <h3 style="color: red;">There was an error with your form</h3>
+        {% endif %}
+
+        <form action="{% url 'sign_up' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <br>
+            <input type="submit" value="Sign Up">
+        </form>
+        <br>
+        <br>
+        <a href="{% url 'profile' %}"><button>Main Page</button></a>
+        <br>
+        <br>
+        <h3>Already have an account? <a href="{% url 'login' %}">Login</a></h3>
+
+    {% endblock body %}
+</body>
+</html>
