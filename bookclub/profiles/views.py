@@ -3,13 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
-
+from .models import Profile
 
 
 @login_required(login_url='profiles:login')
 def profile(request):
     user_username = request.user.username
-    user_id = request.user.id
     return render(request, 'profiles/profile.html', context={'user': user_username})
 
 def sign_up(request):
@@ -21,6 +20,10 @@ def sign_up(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             login(request, user)
+
+            user_instance = request.user
+            profile = Profile.objects.create(user=user_instance)
+            profile.save()
 
             return redirect('profiles:profile')
     
