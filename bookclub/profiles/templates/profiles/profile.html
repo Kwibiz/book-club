@@ -11,7 +11,7 @@
     {% block body %}
 
     <h2>LOGGED IN AS {{ user }}</h2>
-    <a href="{% url 'logout' %}">logout</a>
+    <a href="{% url 'profiles:logout' %}">logout</a>
 
     {% endblock body %}
 </body>

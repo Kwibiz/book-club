@@ -14,7 +14,7 @@
         <h3 style="color: red;">There was an error with your form</h3>
         {% endif %}
 
-        <form action="{% url 'sign_up' %}" method="POST">
+        <form action="{% url 'profiles:sign_up' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <br>
@@ -23,10 +23,10 @@
         </form>
         <br>
         <br>
-        <a href="{% url 'profile' %}"><button>Main Page</button></a>
+        <a href="{% url 'profiles:profile' %}"><button>Main Page</button></a>
         <br>
         <br>
-        <h3>Already have an account? <a href="{% url 'login' %}">Login</a></h3>
+        <h3>Already have an account? <a href="{% url 'profiles:login' %}">Login</a></h3>
 
     {% endblock body %}
 </body>
